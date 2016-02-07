@@ -120,7 +120,7 @@ function startTimer(index, object) {
             selectButton(index);
         }
         console.log('startTimer i = ' + index); //updating fine
-    }, 2000);
+    }, 10000);
 }
 
 function stopTimer() {
