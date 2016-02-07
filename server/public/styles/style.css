@@ -1,0 +1,37 @@
+.index-point {
+    width: 25px;
+    height: 25px;
+    background-color: #dad5d2;
+    border: 1px solid black;
+    float: left;
+    display: inline-block;
+}
+
+.index-point-active {
+    background-color: #ee100d;
+}
+
+.person-info {
+    height: 400px;
+}
+
+.person-hide {
+    display: none;
+}
+
+img {
+    padding-bottom: 10px;
+}
+
+img.person-Photo {
+    height: 250px;
+    width: 250px;
+}
+
+#right-arrow {
+     padding-top: 100px;
+ }
+
+#left-arrow {
+    padding-top: 100px;
+}
