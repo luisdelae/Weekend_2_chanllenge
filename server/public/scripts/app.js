@@ -1,4 +1,7 @@
+var i = -1;
+
 $(document).ready(function(){
+
 
     getData();
 
@@ -9,37 +12,35 @@ function getData(){
         type: "GET",
         url:"/data",
         success: function(data) {
-            var i = -1;
+            //var i = -1;
             var timerID;
             console.log(data);
 
-            startTimer(i, data.people);
+           startTimer(data.people);
 
             $('#left-arrow').on('click', function() {
+
+                stopTimer();
+
                 if (i > 0) {
                     i--;
                     emptyPeopleDiv();
                     appendPerson(data.people[i]);
                     showPerson();
                     selectButton(i);
+                    startTimer(data.people);
                 } else if (i = 0) {
                     emptyPeopleDiv();
                     appendPerson(data.people[i]);
                     showPerson();
                     selectButton(i);
+                    startTimer(data.people);
                 }
             });
 
-            //the timer works kind of. It starts and cycles fine.
-            //stops and resets OK when an arrow is pressed.
-            //clicking the arrow isn't picking up the current value of i for some reason, just resetting
-            //to -1 the first time then starting form there
-            //the timer then works fine but hitting the arrow button keeps its own i value.
-            //I don't think startTimer is updating the global value of i, but I can't get it to return the value.
             $('#right-arrow').on('click', function() {
-                console.log('right arrow click i = ' + i);
+
                 stopTimer();
-                console.log('timer stopped. i = ' + i);
 
                 if (i < 19) {
                     i++;
@@ -47,13 +48,14 @@ function getData(){
                     appendPerson(data.people[i]);
                     showPerson();
                     selectButton(i);
-                    startTimer(i, data.people);
+                    startTimer(data.people);
                 } else if (i = 19) {
                     stopTimer();
                     emptyPeopleDiv();
                     appendPerson(data.people[i]);
                     showPerson();
                     selectButton(i);
+                    startTimer(data.people);
                 }
 
             });
@@ -66,7 +68,7 @@ function getData(){
                 appendPerson(data.people[i]);
                 showPerson();
                 selectButton(i);
-                startTimer(i, data.people);
+                startTimer(data.people);
             });
 
         },
@@ -105,21 +107,21 @@ function showPerson() {
 }
 
 
-function startTimer(index, object) {
+function startTimer(object) {
     timerID = setInterval(function () {
-        if (index < 19) {
-            index++;
+        if (i < 19) {
+            i++;
             emptyPeopleDiv();
-            appendPerson(object[index]);
+            appendPerson(object[i]);
             showPerson();
-            selectButton(index);
-        } else if (index = 19) {
+            selectButton(i);
+        } else if (i = 19) {
             emptyPeopleDiv();
-            appendPerson(object[index]);
+            appendPerson(object[i]);
             showPerson();
-            selectButton(index);
+            selectButton(i);
         }
-        console.log('startTimer i = ' + index); //updating fine
+        console.log('startTimer i = ' + i); //updating fine
     }, 10000);
 }
 
