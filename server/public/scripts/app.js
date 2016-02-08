@@ -12,7 +12,7 @@ function getData(){
         type: "GET",
         url:"/data",
         success: function(data) {
-            //var i = -1;
+
             var timerID;
             console.log(data);
 
@@ -29,7 +29,8 @@ function getData(){
                     showPerson();
                     selectButton(i);
                     startTimer(data.people);
-                } else if (i = 0) {
+                } else if (i === 0) {
+                    i = 19;
                     emptyPeopleDiv();
                     appendPerson(data.people[i]);
                     showPerson();
@@ -49,7 +50,8 @@ function getData(){
                     showPerson();
                     selectButton(i);
                     startTimer(data.people);
-                } else if (i = 19) {
+                } else if (i === 19) {
+                    i = 0;
                     stopTimer();
                     emptyPeopleDiv();
                     appendPerson(data.people[i]);
@@ -115,13 +117,13 @@ function startTimer(object) {
             appendPerson(object[i]);
             showPerson();
             selectButton(i);
-        } else if (i = 19) {
+        } else if (i === 19) {
+            i = 0;
             emptyPeopleDiv();
             appendPerson(object[i]);
             showPerson();
             selectButton(i);
         }
-        console.log('startTimer i = ' + i); //updating fine
     }, 10000);
 }
 
